@@ -20,7 +20,7 @@ const countriesReducer = function(state = initialState, action) {
 
     case GET_COUNTRY:
       const selectedCountry = state.countries.find(
-        country => country.id == action.id
+        country => country.id === action.id
       );
       return Object.assign({}, state, { selectedCountry });
 
@@ -32,10 +32,10 @@ const countriesReducer = function(state = initialState, action) {
 
     case DELETE_COUNTRY:
       const notDeletedCountries = state.countries.filter(
-        country => country.id != action.id
+        country => country.id !== action.id
       );
       const notDeletedVisibleCountries = state.visibleCountries.filter(
-        country => country.id != action.id
+        country => country.id !== action.id
       );
       return Object.assign({}, state, {
         countries: notDeletedCountries,
@@ -47,6 +47,7 @@ const countriesReducer = function(state = initialState, action) {
         country => country.continent === action.name
       );
       return Object.assign({}, state, { visibleCountries: continentCountries });
+    default:
   }
 
   return state;
